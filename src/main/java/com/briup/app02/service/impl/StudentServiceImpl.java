@@ -32,7 +32,8 @@ public class StudentServiceImpl implements IStudentService{
 
 	@Override
 	public void insertStudent(Student student) throws Exception {
-		if(student==null)
+		Student stu = studentMapper.findById(student.getId());
+		if(stu!=null)
 			throw new Exception("id错误！");
 		else
 		studentMapper.insertStudent(student);
@@ -49,7 +50,8 @@ public class StudentServiceImpl implements IStudentService{
 	
 	@Override
 	public void updateStudent(Student student) throws Exception{
-		if(student==null)
+		Student stu = studentMapper.findById(student.getId());
+		if(stu==null)
 			throw new Exception("要更新的学生id有误！");
 		else 
 		studentMapper.updateStudent(student);
